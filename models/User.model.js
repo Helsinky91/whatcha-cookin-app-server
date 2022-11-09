@@ -13,12 +13,17 @@ const userSchema = new Schema(
     password: {
       type: String,
       required: [true, 'Password is required.']
+    },
+    photo: {
+      type: String
+
     }
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
+  
 );
 
 const User = model("User", userSchema);

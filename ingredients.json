@@ -1,0 +1,134 @@
+[
+    {
+        "name": "Aceite de soja",
+        "tag": "",
+        "category": "Aceites y materias grasas",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Soybean_Oil%2C_Meal_and_Beans_%2810059732523%29.jpg",
+        "userId": ""
+    },
+    {
+        "name": "Aceite de maíz",
+        "tag": "",
+        "category": "Aceites y materias grasas",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Corn_oil_%28mais%29.jpg",
+        "userId": ""
+    },
+    {
+        "name": "Aceite de oliva",
+        "tag": "",
+        "category": "Aceites y materias grasas",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Aceite_de_oliva_ed.jpg",
+        "userId": ""
+    },
+    {
+        "name": "Aceite de trufa",
+        "tag": "",
+        "category": "Aceites y materias grasas",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Truffle_olive_oil_with_Tuber_melanosporum.JPG",
+        "userId": ""
+    },
+    {
+        "name": "Nata o crema de leche",
+        "tag": "",
+        "category": "Productos lácteos",
+        "comment": "",
+        "img": "https://es.wikipedia.org/wiki/Crema_de_leche#/media/Archivo:Smietana.JPG",
+        "userId": ""
+    },
+    {
+        "name": "Yogur",
+        "tag": "",
+        "category": "Productos lácteos",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Joghurt.jpg",
+        "userId": ""
+    },  {
+        "name": "Leche",
+        "tag": "",
+        "category": "Productos lácteos",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Milk_glass.jpg",
+        "userId": ""
+    },  {
+        "name": "Helado",
+        "tag": "",
+        "category": "Productos lácteos",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/3/31/Ice_Cream_dessert_02.jpg",
+        "userId": ""
+    },  {
+        "name": "Queso",
+        "tag": "",
+        "category": "Productos lácteos",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Caerphilly_cheese.jpg",
+        "userId": ""
+    },  {
+        "name": "Cuajada",
+        "tag": "",
+        "category": "Productos lácteos",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/1/18/Cuajada_cropped_-_juantigues.jpg",
+        "userId": ""
+    },  {
+        "name": "Mantequilla",
+        "tag": "",
+        "category": "Productos lácteos",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Mantega_de_Asturies.jpg",
+        "userId": ""
+    },
+    {
+        "name": "Alubias",
+        "tag": "",
+        "category": "Legumbres",
+        "comment": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Preparando_frijoles.JPG",
+        "userId": ""
+    },
+    {
+        "name": "",
+        "tag": "",
+        "category": "Legumbres",
+        "comment": "",
+        "img": "",
+        "userId": ""
+    },
+    {
+        "name": "",
+        "tag": "",
+        "category": "Legumbres",
+        "comment": "",
+        "img": "",
+        "userId": ""
+    },
+    {
+        "name": "",
+        "tag": "",
+        "category": "Legumbres",
+        "comment": "",
+        "img": "",
+        "userId": ""
+    },
+    {
+        "name": "",
+        "tag": "",
+        "category": "Legumbres",
+        "comment": "",
+        "img": "",
+        "userId": ""
+    },
+    {
+        "name": "",
+        "tag": "",
+        "category": "Legumbres",
+        "comment": "",
+        "img": "",
+        "userId": ""
+    }
+
+]
