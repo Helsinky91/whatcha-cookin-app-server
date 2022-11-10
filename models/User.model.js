@@ -7,6 +7,12 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
+    role: { 
+      type: String
+     },
+     photo: {
+      type: String
+     },
     email: {
       type: String,
       required: [true, 'Email is required.'],
@@ -18,10 +24,11 @@ const userSchema = new Schema(
       type: String,
       required: [true, 'Password is required.']
     },
-    photo: {
-      type: String
-
+    tags: {
+      type: Schema.Types.ObjectId,  
+      ref: "Tags"
     }
+    
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`    
