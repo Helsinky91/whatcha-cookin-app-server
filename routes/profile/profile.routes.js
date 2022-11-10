@@ -4,7 +4,11 @@ const router = require("express").Router();
 
 
 
-// GET "/api/profile/:userId/details" -> shows one profile by ID
+// GET "/api/profile/:userId/details" -> shows loggedin user profile by ID of req.payload
+//si quiero ver el loggedin perfil, del req.payload
+
+// GET "/api/profile/:userId/details" -> shows one profile by ID 
+//si quiero ver el perfil de amigo, req.params 
 
 
 

@@ -8,10 +8,12 @@ const userSchema = new Schema(
       required: true
     },
     role: { 
-      type: String
+      type: String,
+      default: "user"
      },
      photo: {
-      type: String
+      type: String,
+      default: "/public/images/AvatarDefault.png"
      },
     email: {
       type: String,

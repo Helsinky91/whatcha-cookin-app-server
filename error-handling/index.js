@@ -9,7 +9,7 @@ module.exports = (app) => {
     // always logs the error
     console.error("ERROR", req.method, req.path, err);
 
-    if (err.name === "UnauthorizedError") {
+    if (err.status === 401) {
       res.status(401).json({ errorMessage: "Token inválido o indefinido"})
       return
     }

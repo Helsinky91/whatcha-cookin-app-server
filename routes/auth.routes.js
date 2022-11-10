@@ -73,7 +73,7 @@ router.post("/login", async (req, res, next) => {
   }
 
   try {
-    const foundUser = await User.findById("636cdd9ff466ae975d1c91e4");
+    const foundUser = await User.findOne({email: email});
     // check if user exist
     if (foundUser === null) {
       res.status(400).json({ errorMessage: "Credenciales no validas" });
@@ -87,7 +87,7 @@ router.post("/login", async (req, res, next) => {
       return;
     }
 
-    // info of the user
+    // info of the user stored in the Token
     const payload = {
       _id: foundUser._id,
       username: foundUser.username,
