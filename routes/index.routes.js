@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const isLogged = require("../middlewares/auth.middlewares");
+const  isLogged  = require("../middlewares/auth.middlewares");
 
 router.get("/", (req, res, next) => {
   res.json("All good in here");

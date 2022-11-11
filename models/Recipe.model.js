@@ -11,10 +11,6 @@ const recipeSchema = new Schema(
         //feeds from User.model 
         type: Schema.Types.ObjectId,
         ref: "User"
-    }, 
-    comment: {
-        type: Schema.Types.ObjectId,
-        ref: "Comment"
     },
     description: String,
     steps: String,

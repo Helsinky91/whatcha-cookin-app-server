@@ -19,6 +19,8 @@ const isLogged = jwt(
         return token;
         }
     }
-);  
+);
+
 
 module.exports = isLogged;
+

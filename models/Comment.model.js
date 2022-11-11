@@ -4,13 +4,14 @@ const commentSchema = new Schema(
     {
         username: {
         //feeds from User.model 
-        userId: Schema.Types.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: "User"
        }, 
        recipe: {
            //feeds from Recipe.model 
-           recipe: Schema.Types.ObjectId,
-           ref: "Recipe"
+           type: Schema.Types.ObjectId,
+           ref: "Recipe",
+           type: String
        }
    })
 

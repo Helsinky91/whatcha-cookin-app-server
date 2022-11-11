@@ -17,25 +17,29 @@ const userSchema = new Schema(
      },
     email: {
       type: String,
-      required: [true, 'Email is required.'],
+      required: true,
       unique: true,
       lowercase: true,
       trim: true
     },
     password: {
       type: String,
-      required: [true, 'Password is required.']
+      required: true
     },
     tags: {
       type: Schema.Types.ObjectId,  
       ref: "Tags"
     },
-    friends: {
+    friends: [{
       //feeds from User.model 
       type: Schema.Types.ObjectId,
-      ref: "Friends",
+      ref: "User",
       // default: []
-    }
+    }],
+    favourites: [{
+      type: Schema.Types.ObjectId,
+      ref: "Recipe",
+    }]
     
   },
   {

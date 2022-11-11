@@ -1,8 +1,19 @@
 const User = require("../models/User.model");
 const router = require("express").Router();
+const  isLogged = require("../middlewares/auth.middlewares");
 
-// GET "/api/profile/search" -> shows filtered profiles
 
+
+// GET "/api/profile/list" -> shows filtered profiles
+router.get("/list", async (req, res, next) => {
+    try {
+        const response = await User.find()
+        res.status(200).json(response)
+        
+    } catch (error) {
+        next(error)
+    }
+})
 
 
 // GET "/api/profile/my-profile" -> shows loggedin user profile by ID of req.payload
@@ -14,6 +25,7 @@ router.get("/my-profile", async (req, res, next) => {
         console.log("req.payload._id", req.payload._id)
         console.log("response", response)
         res.status(200).json(response)
+
     } catch (error) {
         next(error)
     }
@@ -32,6 +44,35 @@ try {
 }
 })
 
+//PATCH "/api/profile/:userId/edit "  => edits and updates profile
+router.patch("/:userId/edit", isLogged, async (req, res, next) => {
+    
+    const { userId }= req.params
+    const { username, role, photo, email, tags, friends, favourites } = req.body
+
+    //get the changes to edit the user
+    const userUpdates = {
+        username, 
+        role, 
+        photo: req.file?.path,
+        email, 
+        tags, 
+        friends, 
+        favourites
+    }
+
+    try {
+        await User.findByIdAndUpdate(req.params.userId, userUpdates);
+        res.status(200).json("User updated successfully")
+
+    }catch(error){
+        next(error)
+    }
+
+})
+
+
+
 // PATCH "/api/profile/:userId/add-friend" -> adds one profile as your friend
 router.patch("/:userId/add-friend", async (req, res, next) => {
     const addFriend = {
@@ -46,8 +87,8 @@ router.patch("/:userId/add-friend", async (req, res, next) => {
     res.status(200).json("Amigo añadido correctamente")
 })
 
-// PATCH"/api/profile/:userId/delete-friend" -> removes one profile as your friend
-router.patch("/:userId/delete-friend", async (req, res,next) => {
+// PATCH"/api/profile/:userId/un-friend" -> removes one profile as your friend
+router.patch("/:userId/un-friend", async (req, res,next) => {
 
     const { userId }= req.params
 
@@ -69,7 +110,7 @@ router.delete("/:userId/delete-profile", async (req, res,next) => {
     const { userId } = req.params
 
     if (req.payload.role !== "admin" || req.payload._id !== userId) {
-        return
+        next  //!return?
     }
 
     try {

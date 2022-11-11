@@ -1,5 +1,9 @@
 const router = require("express").Router();
 const Recipe = require("../models/Recipe.model");
+const  isLogged  = require("../middlewares/auth.middlewares");
+const User = require("../models/User.model");
+const isAdmin = require("../middlewares/admin.middleware");
+
 
 // GET "/api/recipes/random-recipe" -> shows one random recipe
 router.get("/random-recipe", async (req, res, next) => {
@@ -13,7 +17,8 @@ router.get("/random-recipe", async (req, res, next) => {
         
         // .skip() will move pass the first x amount of documents. findOne will bring the first after the skip.
         const response = await Recipe.findOne().skip(random) // returns a single random document
-
+        
+        res.status(200).json(response)
 
     } catch (error) {
         next(error)
@@ -41,7 +46,7 @@ router.get("/:recipeId/details", async (req, res, next) => {
     const { recipeId } = req.params;
 
     try{
-        const response = await Todo.findById(todoId)
+        const response = await Todo.findById(recipeId)
         res.status(200).json(response)
 
     }catch(error){
@@ -52,24 +57,26 @@ router.get("/:recipeId/details", async (req, res, next) => {
 
 
 // PATCH "/api/recipes/:recipeId/edit" -> edit specific recipe
-router.patch("/:recipeId/edit", async (req, res, next) =>  {
-    
+router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
+    const { _id } = req.payload
+    const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
+
     //get the changes to edit the recipe
     const recipeUpdates = {
-        name: req.body.name,
-        tag: req.body.tag,
-        createdBy: req.body.createdBy,
-        comment: req.body.comment,
-        desciption: req.body.desciption,
-        steps: req.body.steps,
+        name,
+        tag,
+        createdBy: _id,
+        comment,
+        description,
+        steps,
         photo: req.file?.path,
-        typeOfFood: req.body.typeOfFood,
-        ingredients: req.body.ingredients
+        typeOfFood,
+        ingredients
     }
 
     try{
-        await Recipe.findByIdUndUpdate(req.params.recipeId, recipeUpdates);
-        res.status(200).json("Recipe edited successfully")
+        await Recipe.findByIdAndUpdate(req.params.recipeId, recipeUpdates);
+        res.status(200).json("Recipe updated successfully")
 
     }catch(error) {
         next(error)
@@ -77,20 +84,22 @@ router.patch("/:recipeId/edit", async (req, res, next) =>  {
 })
 
 
-// POST "/api/recipes" ->  receives details from new recipe in FE and creates it in DB
-router.post("/", async (req, res, next) => {
- console.log("reqbody", req.body)
+// POST "/api/recipes/create" ->  receives details from new recipe in FE and creates new recipe in DB
+router.post("/create", isLogged, async (req, res, next) => {
+    const { _id } = req.payload
+
+    const {name, tag, description, steps, photo, typeOfFood, ingredients} = req.body
+
     //get data from FE to send BE
     const newRecipe = {
-        name: req.body.name,
-        tag: req.body.tag,
-        createdBy: req.body.createdBy,
-        comment: req.body.comment,
-        desciption: req.body.desciption,
-        steps: req.body.steps,
-        // photo: req.file?.path,
-        typeOfFood: req.body.typeOfFood,
-        ingredients: req.body.ingredients
+        name,
+        tag,
+        createdBy: _id,
+        description,
+        steps,
+        photo: req.file?.path,
+        typeOfFood,
+        ingredients
     }
     console.log("newrecipe", newRecipe)
 
@@ -106,9 +115,17 @@ router.post("/", async (req, res, next) => {
 
 
 // DELETE "/api/recipes/:recipeId/delete" -> delete specific recipe		
-router.delete("/:recipeId/delete", async (req, res, next) => {
+router.delete("/:recipeId/delete", isLogged, async (req, res, next) => {
+    const { recipeId } = req.params
+    const { _id } = req.payload
+    
     try {
-        await Recipe.findByIdeAndDelete(req.params.todoId)
+        const recipeDetails = await Recipe.findById(recipeId)
+        if (req.payload.role !== "admin" || recipeDetails.createdBy !== _id) {
+            next  
+        }
+        await Recipe.findByIdAndDelete(recipeId)
+        res.status(200).json("Recipe deleted")
     } catch (error) {
         next(error)
     }
@@ -117,10 +134,38 @@ router.delete("/:recipeId/delete", async (req, res, next) => {
 
 
 //PATCH "api/recipes/:recipeId/fav-recipe" -> add recipe to fav
+router.patch("/:recipeId/fav-recipe", isLogged, async (req, res, next) => {
+    const { _id } = req.payload
+   const { recipeId } = req.params
+   try {
+     await User.findByIdAndUpdate(_id, {
+       $addToSet: { favourites: recipeId }, //to add favourites to our list and avoid repetitions.
+    });
+    res.status(200).json("Todo bien, añadido a favoritos")
+ 
+   } catch (error) {
+     next(error);
+   }
+ });
 
+
+ 
 
 //PATCH "api/recipes/:recipeId/delete-fav" -> remove recipe from fav
+router.patch("/:recipeId/delete-fav", isLogged, async (req, res,next) => {
+    const { _id } = req.payload
+    const { recipeId } = req.params
 
+  try {
+    await User.findByIdAndUpdate(_id    , {
+      $pull: { favourites: recipeId },
+    });
+    res.status(200).json("Favorito eliminado correctamente")
+   
+  } catch (error) {
+    next(error);
+  }
+});
 
 //! BONUS PATCH "/api/recipes/:recipeId/likes"
 
