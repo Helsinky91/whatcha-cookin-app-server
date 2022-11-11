@@ -29,6 +29,12 @@ const userSchema = new Schema(
     tags: {
       type: Schema.Types.ObjectId,  
       ref: "Tags"
+    },
+    friends: {
+      //feeds from User.model 
+      type: Schema.Types.ObjectId,
+      ref: "Friends",
+      // default: []
     }
     
   },
