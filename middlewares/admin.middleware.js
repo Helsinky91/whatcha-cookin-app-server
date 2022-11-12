@@ -1,11 +1,20 @@
-const isAdmin = (req, res, next) => {
+const User = require("../models/User.model");
+
+const isAdmin = async (req, res, next) => {
     console.log("role", req.payload.role)
-    if (req.payload.role === "admin"){
-        res.status(200).json("admin, todo bien")
-    } else {
-        next()
+    try {
+        const userRole = await User.findById(req.payload._id).select("role")
+        console.log("userRole!", userRole)
+        if (userRole.role !== "admin"){
+            res.status(500).json("Admin role required")
+            return
+        } else {
+            next()
 
+        }
+    } catch (error) {
+        next(error)
     }
+  
 }
-
 module.exports = isAdmin;

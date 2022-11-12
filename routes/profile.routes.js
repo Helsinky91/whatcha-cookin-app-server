@@ -1,6 +1,6 @@
 const User = require("../models/User.model");
 const router = require("express").Router();
-const  isLogged = require("../middlewares/auth.middlewares");
+
 
 
 
@@ -45,15 +45,14 @@ try {
 })
 
 //PATCH "/api/profile/:userId/edit "  => edits and updates profile
-router.patch("/:userId/edit", isLogged, async (req, res, next) => {
+router.patch("/:userId/edit", async (req, res, next) => {
     
     const { userId }= req.params
-    const { username, role, photo, email, tags, friends, favourites } = req.body
+    const { username, photo, email, tags, friends, favourites } = req.body
 
     //get the changes to edit the user
     const userUpdates = {
         username, 
-        role, 
         photo: req.file?.path,
         email, 
         tags, 
@@ -109,13 +108,13 @@ router.patch("/:userId/un-friend", async (req, res,next) => {
 router.delete("/:userId/delete-profile", async (req, res,next) => {
     const { userId } = req.params
 
-    if (req.payload.role !== "admin" || req.payload._id !== userId) {
-        next  //!return?
+    try {
+    if (req.payload._id === userId) {
+        await User.findByIdAndDelete(userId)
+        res.status(200).json("Perfil eliminado correctamente")
+        
     }
 
-    try {
-        await User.findByIdAndDelete(req.payload._id)
-        res.status(200).json("Perfil eliminado correctamente")
 
     } catch (error) {
         next(error)

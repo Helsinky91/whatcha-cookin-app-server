@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const isLogged = require("../middlewares/auth.middlewares");
 const Ingredient = require("../models/Ingredient.model");
 
 
@@ -6,7 +7,7 @@ const Ingredient = require("../models/Ingredient.model");
 router.get("/list", async (req, res, next) => {
 
     try{
-        const response = await Ingredient.find().select("title", "photo");
+        const response = await Ingredient.find().select("title, photo");
         res.status(200).json(response)
     
     }catch(error){
@@ -15,20 +16,20 @@ router.get("/list", async (req, res, next) => {
 })
 
 // PATCH "/api/ingredient/:ingredientId/edit" -> edits one ingredient by ID
-router.patch("/:ingredientId/edit", async (req, res, next) => {
-    
+router.patch("/:ingredientId/edit", isLogged, async (req, res, next) => {
+    const { ingredientId } = req.params
     //get the changes to edit the recipe
+    const { name, tag, comment, category } = req.body
     const ingrUpdate = {
-        name: req.body.name,
-        tag: req.body.tag,
-        comment: req.body.comment,
+        name,
+        tag,
+        comment,
         photo: req.file?.path,
-        category: req.body.category,
-        createdBy: req.body.createdBy
+        category
     }
 
     try {
-       await Ingredient.findByIdAndUpdate(req.params.ingredientId, ingrUpdate)
+       await Ingredient.findByIdAndUpdate(ingredientId, ingrUpdate)
         res.status(200).json("Ingredient edited successfully")
 
     } catch (error) {
@@ -37,15 +38,16 @@ router.patch("/:ingredientId/edit", async (req, res, next) => {
 })
 
 // POST "/api/ingredient/create" -> create a new ingredient
-router.patch("/create", async (req, res, next) => {
-   
+router.patch("/create", isLogged, async (req, res, next) => {
+    const { _id } = req.payload
+    const { name, tag, comment, category } = req.body
     const newIngredient = {
-        name: req.body.name,
-        tag: req.body.tag,
-        comment: req.body.comment,
+        name,
+        tag,
+        comment,
         photo: req.file?.path,
-        category: req.body.category,
-        createdBy: req.body.createdBy
+        category,
+        createdBy: _id
     }
 
     try {
@@ -59,8 +61,11 @@ router.patch("/create", async (req, res, next) => {
 
 // DELETE "/api/ingredient/:ingredientId/delete" -> delete one ingredient
 router.delete("/:ingredientId/delete", async (req, res, next) => {
+    const { ingredientId } = req.params
+
     try {
-        await Ingredient.findByIdAndDelete(req.params.ingredientId);
+        await Ingredient.findByIdAndDelete(ingredientId);
+        res.status(201).json("Ingredient deleted in DB");
 
     } catch (error) {
         next(error)

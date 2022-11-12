@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const  isLogged  = require("../middlewares/auth.middlewares");
+const isAdmin = require("../middlewares/admin.middleware");
+
+
 
 router.get("/", (req, res, next) => {
   res.json("All good in here");
@@ -13,12 +16,16 @@ router.use("/auth", authRoutes)
 const profileRoutes = require("./profile.routes")
 router.use("/profile", isLogged, profileRoutes)
 
+//set up for admin.routes.js to start "/admin/..."
+const adminRoutes = require("./admin.routes");
+router.use("/admin", isLogged, isAdmin, adminRoutes)
+
 //set up for recipes.routes.js to start "/recipes/..."
 const recipesRoutes = require("./recipes.routes")
 router.use("/recipes", recipesRoutes)
 
 //set up for ingredients.routes.js to start "/ingredients/..."
 const ingredientsRoutes = require("./ingredients.routes");
-router.use("/ingredients", ingredientsRoutes)
+router.use("/ingredient", ingredientsRoutes)
 
 module.exports = router;
