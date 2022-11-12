@@ -57,14 +57,12 @@ router.get("/:recipeId/details", async (req, res, next) => {
 
 // PATCH "/api/recipes/:recipeId/edit" -> edit specific recipe
 router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
-    const { _id } = req.payload
     const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
 
     //get the changes to edit the recipe
     const recipeUpdates = {
         name,
         tag,
-        createdBy: _id,
         comment,
         description,
         steps,
@@ -115,22 +113,6 @@ router.post("/create", isLogged, async (req, res, next) => {
 
 //! si ponemos middleware isAdmin, esta ruta solo servirá para el admin. Con el condicional, serviria para user que crea receta i admin. Doblamos la ruta?
 // DELETE "/api/recipes/:recipeId/delete" -> delete specific recipe		
-// router.delete("/:recipeId/delete", isLogged, async (req, res, next) => {
-//     const { recipeId } = req.params
-//     const { _id } = req.payload
-    
-//     try {
-//         const  recipeDetails = await Recipe.findById(recipeId)
-//         console.log("recipeId", recipeDetails.createdBy)
-//         if (recipeDetails === _id) {
-//             await Recipe.findByIdAndDelete(recipeId)
-//             res.status(200).json("Recipe deleted")
-          
-//         }
-//     } catch (error) {
-//         next(error)
-//     }
-// })
 router.delete("/:recipeId/delete", isLogged, async (req, res, next) => {
     const { recipeId } = req.params
     const { _id } = req.payload

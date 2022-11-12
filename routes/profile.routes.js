@@ -75,15 +75,15 @@ router.patch("/:userId/edit", async (req, res, next) => {
 // PATCH "/api/profile/:userId/add-friend" -> adds one profile as your friend
 router.patch("/:userId/add-friend", async (req, res, next) => {
     const addFriend = {
-        friends: req.body.addFriend
+        friends: req.params.userId
     }
 
     try {
         await User.findByIdAndUpdate(req.payload._id, addFriend)
+        res.status(200).json("Amigo añadido correctamente")
     } catch (error) {
         next(error)
     }
-    res.status(200).json("Amigo añadido correctamente")
 })
 
 // PATCH"/api/profile/:userId/un-friend" -> removes one profile as your friend
