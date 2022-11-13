@@ -87,13 +87,14 @@ router.post("/create", isLogged, async (req, res, next) => {
     const { _id } = req.payload
 
     const {name, tag, description, steps, photo, typeOfFood, ingredients} = req.body
+      //! error cuando se añade uno, no se rellenan los campos
 
     //get data from FE to send BE
     const newRecipe = {
-        name,
-        tag,
+        name: name,
+        tag: tag,
         createdBy: _id,
-        description,
+        description: description,
         steps,
         photo: req.file?.path,
         typeOfFood,

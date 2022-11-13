@@ -8,7 +8,7 @@ router.get("/list", async (req, res, next) => {
 
     try{
         const response = await Ingredient.find()
-        // console.log("ingedient list: ", response)
+        //  console.log("ingedient list: ", response)
         res.status(200).json(response)
     
     }catch(error){
