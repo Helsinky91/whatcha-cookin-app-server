@@ -27,7 +27,8 @@ router.get("/random-recipe", async (req, res, next) => {
 //GET "api/recipes/recipes-list" -> shows a list of all recipes name + photo + tags
 router.get("/recipes-list", async (req, res, next) => {
     try{
-        const response = await Recipe.find().select("title", "tag", "photo");
+        const response = await Recipe.find()
+        // console.log("recipe list :" , response)
         res.status(200).json(response)
 
     }catch(error) {

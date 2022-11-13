@@ -7,7 +7,8 @@ const Ingredient = require("../models/Ingredient.model");
 router.get("/list", async (req, res, next) => {
 
     try{
-        const response = await Ingredient.find().select("title, photo");
+        const response = await Ingredient.find()
+        // console.log("ingedient list: ", response)
         res.status(200).json(response)
     
     }catch(error){
@@ -47,7 +48,7 @@ router.patch("/create", isLogged, async (req, res, next) => {
         comment,
         photo: req.file?.path,
         category,
-        createdBy: _id
+        createdBy: _id //! no cal, no?
     }
 
     try {
