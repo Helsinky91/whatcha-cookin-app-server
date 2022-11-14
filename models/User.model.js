@@ -26,10 +26,7 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    tags: {
-      type: Schema.Types.ObjectId,  
-      ref: "Tags"
-    },
+    tag: [String],
     friends: [{
       //feeds from User.model 
       type: Schema.Types.ObjectId,

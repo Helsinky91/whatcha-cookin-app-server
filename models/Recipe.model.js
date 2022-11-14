@@ -6,7 +6,7 @@ const recipeSchema = new Schema(
         type: String,
         required: true
     },
-    tag: String,
+    tag: [String],
     createdBy: {
         //feeds from User.model 
         type: Schema.Types.ObjectId,
