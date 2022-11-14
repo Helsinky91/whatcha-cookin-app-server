@@ -16,7 +16,7 @@ const recipeSchema = new Schema(
     steps: String,
     photo: {
         type: String,
-        default: "/public/images/RecetaDefault.png"
+        default: "../public/images/RecetaDefault.png"
     },
     //to define japanese, mediterranean, ...
     typeOfFood: String,

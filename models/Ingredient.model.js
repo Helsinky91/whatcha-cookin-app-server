@@ -9,7 +9,7 @@ const ingredientSchema = new Schema(
     tag: String,
     photo: {
         type: String,
-        default: "/public/images/IngredientDefault.png"
+        default: "../public/images/IngredientDefault.png"
     },
     category: String,
     createdBy: {
