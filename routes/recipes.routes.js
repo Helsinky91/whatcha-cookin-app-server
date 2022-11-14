@@ -46,7 +46,7 @@ router.get("/:recipeId/details", async (req, res, next) => {
     const { recipeId } = req.params;
 
     try{
-        const response = await Todo.findById(recipeId)
+        const response = await Recipe.findById(recipeId)
         res.status(200).json(response)
 
     }catch(error){
