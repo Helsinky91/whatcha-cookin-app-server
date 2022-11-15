@@ -139,9 +139,9 @@ router.delete("/:userId/delete-profile", async (req, res,next) => {
     }
 })
 
-//GET "api/profile/:userId/friends" -> populate friends of one user
-router.get("/:userId/friends", async (req, res, next) => {
-    const { userId } = req.params
+//GET "api/profile/friends" -> populate friends of one user
+router.get("/friends", async (req, res, next) => {
+    const { userId } = req.payload
     try {
         const response = await User.findById(userId).populate("friends")
         res.status(200).json(response)
@@ -153,9 +153,12 @@ router.get("/:userId/friends", async (req, res, next) => {
 
 //GET "api/profile/my-recipes" -> populate recipes of the user
 router.get("/my-recipes", async (req, res, next) => {
-    const { userId } = req.params
+    const { userId } = req.payload
+
     try {
-        const response = await Recipe.find().populate("createdBy", `${userId}`)
+        const response = await Recipe.find().populate({ path: 'createdBy', select: userId })
+        console.log("response1", response)
+
         res.status(200).json(response)
        
       } catch (error) {
@@ -163,11 +166,23 @@ router.get("/my-recipes", async (req, res, next) => {
       }
 })
 
+//GET "/api/profile/:friendId/fav-recipes"
+router.get("/:friendId/fav-recipes", async (req, res,next) => {
+    const { friendId }= req.params
+try {
+    const response = await User.findById(friendId).populate("favourites")
+    res.status(200).json(response)
+} catch (error) {
+    next(error)
+}
+})
+
 //GET "api/profile/fav-recipes" -> populate favourite recipes of user
 router.get("/fav-recipes", async (req, res, next) => {
     const { userId } = req.payload
     try {
-        const response = await User.findById(userId).populate("favourites")
+        const response = await User.findById(userId).populate({ path: 'createdBy', select: userId })
+        console.log("response2", response)
         res.status(200).json(response)
        
       } catch (error) {
