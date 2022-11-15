@@ -13,7 +13,7 @@ const userSchema = new Schema(
      },
      image: {
       type: String,
-      default: "./images/AvatarDefault.png"
+      default: "https://res.cloudinary.com/ddzhdj4yd/image/upload/v1668514029/whatcha-cookin/AvatarDefault_gdhinf.png"
      },
     email: {
       type: String,
