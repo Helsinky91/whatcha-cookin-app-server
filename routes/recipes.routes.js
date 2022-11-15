@@ -41,8 +41,7 @@ router.get("/recipes-list", async (req, res, next) => {
 
 
 // GET "/api/recipes/:recipeId/details" -> shows detailed recipes
-router.get("/:recipeId/details", async (req, res, next) => {
-    
+router.get("/:recipeId/details", isLogged, async (req, res, next) => {
     const { recipeId } = req.params;
 
     try{

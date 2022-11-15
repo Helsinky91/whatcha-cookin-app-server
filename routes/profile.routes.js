@@ -169,7 +169,7 @@ router.get("/:userId/my-recipes", async (req, res, next) => {
 
 //GET "api/profile/:userId/fav-recipes" -> populate favourite recipes of user
 router.get("/:userId/fav-recipes", async (req, res, next) => {
-    const { userId } = req.params
+    const { userId } = req.payload
     try {
         const response = await User.findById(userId).populate("favourites")
         res.status(200).json(response)
