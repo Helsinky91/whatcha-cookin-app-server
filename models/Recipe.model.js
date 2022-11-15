@@ -14,7 +14,7 @@ const recipeSchema = new Schema(
     },
     description: String,
     steps: String,
-    photo: {
+    image: {
         type: String,
         default: "../public/images/RecetaDefault.png"
     },

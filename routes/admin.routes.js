@@ -3,16 +3,18 @@ const  isLogged  = require("../middlewares/auth.middlewares");
 const Ingredient = require("../models/Ingredient.model");
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
+
+
 //PATCH "/api/admin/profile/:userId/edit "  => edits and updates profile
 router.patch("/profile/:userId/edit", async (req, res, next) => {
     
-    const { username, role, photo, email, tags, } = req.body
+    const { username, role, image, email, tags, } = req.body
 
     //get the changes to edit the user
     const userUpdates = {
         username, 
         role, 
-        photo: req.file?.path,
+        image: req.body.image,
         email, 
         tags
     }
@@ -43,7 +45,7 @@ router.delete("/profile/:userId/delete-profile", async (req, res,next) => {
 
 // PATCH "/api/admin/recipes/:recipeId/edit" -> edit specific recipe
 router.patch("/recipes/:recipeId/edit", isLogged, async (req, res, next) =>  {
-    const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
+    const {name, tag, comment, description, image, steps, typeOfFood, ingredients} = req.body
 
     //get the changes to edit the recipe
     const recipeUpdates = {
@@ -52,7 +54,7 @@ router.patch("/recipes/:recipeId/edit", isLogged, async (req, res, next) =>  {
         comment,
         description,
         steps,
-        photo: req.file?.path,
+        image: req.body.image,
         typeOfFood,
         ingredients
     }
@@ -87,12 +89,12 @@ router.delete("/recipes/:recipeId/delete", isLogged, async (req, res, next) => {
 router.patch("/ingredient/:ingredientId/edit", isLogged, async (req, res, next) => {
     const { ingredientId } = req.params
     //get the changes to edit the recipe
-    const { name, tag, comment, category } = req.body
+    const { name, tag, image, comment, category } = req.body
     const ingrUpdate = {
         name,
         tag,
         comment,
-        photo: req.file?.path,
+        image: req.body.image,
         category
     }
 

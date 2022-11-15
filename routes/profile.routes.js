@@ -32,6 +32,17 @@ router.get("/my-profile", async (req, res, next) => {
     }
 })
 
+// GET "/api/profile/search-friend" -> searh profiles
+router.get("/search-friends", async (req, res, next) => {
+    try {
+        const response = await User.find()
+        res.status(200).json(response)
+    } catch (error) {
+        next(error)
+        
+    }
+})
+
 
 // GET "/api/profile/:userId/details" -> shows one profile by ID 
 //si quiero ver el perfil de amigo, req.params 
@@ -48,12 +59,12 @@ try {
 //PATCH "/api/profile/:userId/edit "  => edits and updates profile
 router.patch("/:userId/edit", async (req, res, next) => {
     
-    const { username, photo, email, tags, friends, favourites } = req.body
+    const { username, image, email, tags, friends, favourites } = req.body
 
     //get the changes to edit the user
     const userUpdates = {
         username, 
-        photo: req.file?.path,
+        image: req.body.image,
         email, 
         tags, 
         friends, 
@@ -70,16 +81,7 @@ router.patch("/:userId/edit", async (req, res, next) => {
 
 })
 
-// GET "/api/profile/search-friend" -> searh profiles
-router.get("/search-friends", async (req, res, next) => {
-    try {
-        const response = await User.find()
-        res.status(200).json(response)
-    } catch (error) {
-        next(error)
-        
-    }
-})
+
 
 // PATCH "/api/profile/:userId/add-friend" -> adds one profile as your friend
 router.patch("/:userId/add-friend", async (req, res, next) => {

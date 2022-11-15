@@ -16,37 +16,16 @@ router.get("/list", async (req, res, next) => {
     }
 })
 
-// PATCH "/api/ingredient/:ingredientId/edit" -> edits one ingredient by ID
-router.patch("/:ingredientId/edit", isLogged, async (req, res, next) => {
-    const { ingredientId } = req.params
-    //get the changes to edit the recipe
-    const { name, tag, comment, category } = req.body
-    const ingrUpdate = {
-        name,
-        tag,
-        comment,
-        photo: req.file?.path,
-        category
-    }
-
-    try {
-       await Ingredient.findByIdAndUpdate(ingredientId, ingrUpdate)
-        res.status(200).json("Ingredient edited successfully")
-
-    } catch (error) {
-        next(error)
-    }
-})
 
 // POST "/api/ingredient/create" -> create a new ingredient
 router.patch("/create", isLogged, async (req, res, next) => {
     const { _id } = req.payload
-    const { name, tag, comment, category } = req.body
+    const { name, tag, image, comment, category } = req.body
     const newIngredient = {
         name,
         tag,
         comment,
-        photo: req.file?.path,
+        image: req.body.image,
         category,
         createdBy: _id //! no cal, no?
     }
@@ -54,6 +33,29 @@ router.patch("/create", isLogged, async (req, res, next) => {
     try {
         await Ingredient.create(newIngredient);
         res.status(201).json("New ingredient created in DB");
+
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+// PATCH "/api/ingredient/:ingredientId/edit" -> edits one ingredient by ID
+router.patch("/:ingredientId/edit", isLogged, async (req, res, next) => {
+    const { ingredientId } = req.params
+    //get the changes to edit the recipe
+    const { name, tag, image, comment, category } = req.body
+    const ingrUpdate = {
+        name,
+        tag,
+        comment,
+        image: req.body.image,
+        category
+    }
+
+    try {
+       await Ingredient.findByIdAndUpdate(ingredientId, ingrUpdate)
+        res.status(200).json("Ingredient edited successfully")
 
     } catch (error) {
         next(error)
