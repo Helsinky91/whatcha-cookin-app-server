@@ -24,7 +24,7 @@ router.get("/random-recipe", async (req, res, next) => {
     }
 })
 
-//GET "api/recipes/recipes-list" -> shows a list of all recipes
+//GET "api/recipes/recipes-list" -> shows a list of all recipes name + photo + tags
 router.get("/recipes-list", async (req, res, next) => {
     try{
         const response = await Recipe.find()
@@ -36,34 +36,9 @@ router.get("/recipes-list", async (req, res, next) => {
     }
 })
 
-// POST "/api/recipes/create" ->  receives details from new recipe in FE and creates new recipe in DB
-router.post("/create", isLogged, async (req, res, next) => {
-    const { _id } = req.payload
+// GET  "/api/recipes/search" -> shows a filtered search of recipes
+//* NO NEED FOR A LIST OF SEARCH HERE, SERá COMPONENT EN EL FE. 
 
-    const {name, tag, description, steps, image, typeOfFood, ingredients} = req.body
-     
-    //get data from FE to send BE
-    const newRecipe = {
-        name: name,
-        tag: tag,
-        createdBy: _id,
-        description: description,
-        steps,
-        image: req.body.image,
-        typeOfFood,
-        ingredients
-    }
-    console.log("newrecipe", newRecipe)
-
-    //use newRecipe to create new Recipe in DB
-    try{    
-        await Recipe.create(newRecipe)
-        res.status(201).json("New recipe created in DB")
-
-    }catch(error){
-        next(error)
-    }
-})
 
 // GET "/api/recipes/:recipeId/details" -> shows detailed recipes
 router.get("/:recipeId/details", async (req, res, next) => {
@@ -83,7 +58,7 @@ router.get("/:recipeId/details", async (req, res, next) => {
 
 // PATCH "/api/recipes/:recipeId/edit" -> edit specific recipe
 router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
-    const {name, tag, comment, description, image, steps, typeOfFood, ingredients} = req.body
+    const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
 
     //get the changes to edit the recipe
     const recipeUpdates = {
@@ -92,7 +67,7 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
         comment,
         description,
         steps,
-        image: req.body.image,
+        photo: req.file?.path,
         typeOfFood,
         ingredients
     }
@@ -107,7 +82,35 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
 })
 
 
+// POST "/api/recipes/create" ->  receives details from new recipe in FE and creates new recipe in DB
+router.post("/create", isLogged, async (req, res, next) => {
+    const { _id } = req.payload
 
+    const {name, tag, description, steps, photo, typeOfFood, ingredients} = req.body
+      //! error cuando se añade uno, no se rellenan los campos
+
+    //get data from FE to send BE
+    const newRecipe = {
+        name: name,
+        tag: tag,
+        createdBy: _id,
+        description: description,
+        steps,
+        photo: req.file?.path,
+        typeOfFood,
+        ingredients
+    }
+    console.log("newrecipe", newRecipe)
+
+    //use newRecipe to create new Recipe in DB
+    try{    
+        await Recipe.create(newRecipe)
+        res.status(201).json("New recipe created in DB")
+
+    }catch(error){
+        next(error)
+    }
+})
 
 
 //! si ponemos middleware isAdmin, esta ruta solo servirá para el admin. Con el condicional, serviria para user que crea receta i admin. Doblamos la ruta?
@@ -150,7 +153,7 @@ router.patch("/:recipeId/fav-recipe", isLogged, async (req, res, next) => {
 //PATCH "api/recipes/:recipeId/delete-fav" -> remove recipe from fav
 router.patch("/:recipeId/delete-fav", isLogged, async (req, res,next) => {
     const { _id } = req.payload
-    const { recipeId } = req.params
+ 
 
   try {
     await User.findByIdAndUpdate(_id    , {
@@ -162,6 +165,19 @@ router.patch("/:recipeId/delete-fav", isLogged, async (req, res,next) => {
     next(error);
   }
 });
+
+
+//GET "api/recipes/:recipeId/ingredients" -> populate the ingredients of one recipe
+router.get("/:recipeId/ingredients", isLogged, async (req, res, next) => {
+    const { recipeId } = req.params
+    try {
+        const response = await Recipe.findById(recipeId).populate("ingredients")
+        res.status(200).json(response)
+       
+      } catch (error) {
+        next(error);
+      }
+})
 
 //! BONUS PATCH "/api/recipes/:recipeId/likes"
 
