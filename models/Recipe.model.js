@@ -16,7 +16,7 @@ const recipeSchema = new Schema(
     steps: String,
     image: {
         type: String,
-        default: "../public/images/RecetaDefault.png"
+        default: "https://res.cloudinary.com/ddzhdj4yd/image/upload/v1668514029/whatcha-cookin/RecetaDefault_lxygod.png"
     },
     //to define japanese, mediterranean, ...
     typeOfFood: String,
