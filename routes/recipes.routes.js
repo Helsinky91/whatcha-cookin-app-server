@@ -24,7 +24,7 @@ router.get("/random-recipe", async (req, res, next) => {
     }
 })
 
-//GET "api/recipes/recipes-list" -> shows a list of all recipes name + photo + tags
+//GET "api/recipes/recipes-list" -> shows a list of all recipes name + image + tags
 router.get("/recipes-list", async (req, res, next) => {
     try{
         const response = await Recipe.find()
@@ -66,7 +66,7 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
         comment,
         description,
         steps,
-        photo: req.file?.path,
+        image: req.body.image,
         typeOfFood,
         ingredients
     }
@@ -85,7 +85,7 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
 router.post("/create", isLogged, async (req, res, next) => {
     const { _id } = req.payload
 
-    const {name, tag, description, steps, photo, typeOfFood, ingredients} = req.body
+    const {name, tag, description, steps, typeOfFood, ingredients} = req.body
       //! error cuando se añade uno, no se rellenan los campos
 
     //get data from FE to send BE
@@ -95,7 +95,7 @@ router.post("/create", isLogged, async (req, res, next) => {
         createdBy: _id,
         description: description,
         steps,
-        photo: req.file?.path,
+        image: req.body.image,
         typeOfFood,
         ingredients
     }

@@ -3,7 +3,7 @@
         "name": "Aceite de soja",
         "tag": "",
         "category": "Aceites y materias grasas",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/5/5d/Soybean_Oil%2C_Meal_and_Beans_%2810059732523%29.jpg",
         "userId": ""
     },
@@ -11,7 +11,7 @@
         "name": "Aceite de maíz",
         "tag": "",
         "category": "Aceites y materias grasas",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/1/1f/Corn_oil_%28mais%29.jpg",
         "userId": ""
     },
@@ -19,7 +19,7 @@
         "name": "Aceite de oliva",
         "tag": "",
         "category": "Aceites y materias grasas",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/9/9d/Aceite_de_oliva_ed.jpg",
         "userId": ""
     },
@@ -27,7 +27,7 @@
         "name": "Aceite de trufa",
         "tag": "",
         "category": "Aceites y materias grasas",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Truffle_olive_oil_with_Tuber_melanosporum.JPG",
         "userId": ""
     },
@@ -35,7 +35,7 @@
         "name": "Nata o crema de leche",
         "tag": "",
         "category": "Productos lácteos",
-        "comment": "",
+         
         "img": "https://es.wikipedia.org/wiki/Crema_de_leche#/media/Archivo:Smietana.JPG",
         "userId": ""
     },
@@ -43,42 +43,42 @@
         "name": "Yogur",
         "tag": "",
         "category": "Productos lácteos",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Joghurt.jpg",
         "userId": ""
     },  {
         "name": "Leche",
         "tag": "",
         "category": "Productos lácteos",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Milk_glass.jpg",
         "userId": ""
     },  {
         "name": "Helado",
         "tag": "",
         "category": "Productos lácteos",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/3/31/Ice_Cream_dessert_02.jpg",
         "userId": ""
     },  {
         "name": "Queso",
         "tag": "",
         "category": "Productos lácteos",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Caerphilly_cheese.jpg",
         "userId": ""
     },  {
         "name": "Cuajada",
         "tag": "",
         "category": "Productos lácteos",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/1/18/Cuajada_cropped_-_juantigues.jpg",
         "userId": ""
     },  {
         "name": "Mantequilla",
         "tag": "",
         "category": "Productos lácteos",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Mantega_de_Asturies.jpg",
         "userId": ""
     },
@@ -86,7 +86,7 @@
         "name": "Alubias",
         "tag": "",
         "category": "Legumbres",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Preparando_frijoles.JPG",
         "userId": ""
     },
@@ -94,7 +94,7 @@
         "name": "Garbanzos",
         "tag": "",
         "category": "Legumbres",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/e/ea/Sa-whitegreen-chickpea.jpg",
         "userId": ""
     },
@@ -102,7 +102,7 @@
         "name": "Guisantes",
         "tag": "",
         "category": "Legumbres",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/7/77/Guis-fruto-1.jpg",
         "userId": ""
     },
@@ -110,7 +110,7 @@
         "name": "Lentejas",
         "tag": "",
         "category": "Legumbres",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/d/da/3_types_of_lentil.jpg",
         "userId": ""
     },
@@ -118,7 +118,7 @@
         "name": "Soja",
         "tag": "",
         "category": "Legumbres",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/8/82/Soybean.USDA.jpg",
         "userId": ""
     },
@@ -126,7 +126,7 @@
         "name": "Champiñón",
         "tag": "",
         "category": "Seta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/0/01/ChampignonMushroom.jpg",
         "userId": ""
     },
@@ -134,7 +134,7 @@
         "name": "Níscalo",
         "tag": "",
         "category": "Seta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/8/89/Lactarius_deliciosus.jpg",
         "userId": ""
     }, 
@@ -142,7 +142,7 @@
         "name": "Seta shiitake",
         "tag": "",
         "category": "Seta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/6/65/Lentinula_edodes.jpg",
         "userId": ""
     }, 
@@ -150,7 +150,7 @@
         "name": "Seta de cardo",
         "tag": "",
         "category": "Seta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Pleurotus_eryngii.jpg",
         "userId": ""
     },
@@ -158,7 +158,7 @@
         "name": "Seta de chopo",
         "tag": "",
         "category": "Seta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/2/23/Agrocybe_aegerita.jpg",
         "userId": ""
     },
@@ -166,7 +166,7 @@
         "name": "Trufa",
         "tag": "",
         "category": "Seta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/a/a8/Black_truffles%2C_San_Miniato.jpg",
         "userId": ""
     },
@@ -174,7 +174,7 @@
         "name": "Patata",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/c/cc/Solanum_tuberosum_02.jpg",
         "userId": ""
     },
@@ -182,7 +182,7 @@
         "name": "Lechuga",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/6/6b/Romaine_lettuce.jpg",
         "userId": ""
     },
@@ -190,7 +190,7 @@
         "name": "Acelga",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/b/be/Swiss_Chard.jpg",
         "userId": ""
     },
@@ -198,7 +198,7 @@
         "name": "Alcachofa",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Artichoke71.jpg",
         "userId": ""
     },
@@ -206,7 +206,7 @@
         "name": "Batata",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/3/38/5aday_sweet_potato.jpg",
         "userId": ""
     },
@@ -214,7 +214,7 @@
         "name": "Berenjena",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Aubergine.jpg",
         "userId": ""
     },
@@ -222,7 +222,7 @@
         "name": "Brócoli",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Broccoli_bunches.jpg",
         "userId": ""
     },
@@ -230,7 +230,7 @@
         "name": "Calabacín",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/3/30/0.2014_Cucurbita_pepo_subsp._pepo_convar._giromontiina_-_Sanok.JPG",
         "userId": ""
     },
@@ -238,7 +238,7 @@
         "name": "Calabaza",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/4/44/Cucurbita_2018_G1.jpg",
         "userId": ""
     },
@@ -246,7 +246,7 @@
         "name": "Cebolla",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/3/34/Two_colors_of_onions.jpg",
         "userId": ""
     },
@@ -254,7 +254,7 @@
         "name": "Cebolleta",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/5/59/Scallion.jpg",
         "userId": ""
     },
@@ -262,7 +262,7 @@
         "name": "Col",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "",
         "userId": ""
     },
@@ -270,7 +270,7 @@
         "name": "Col de Bruselas",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/2/23/Brussels_sprout_closeup.jpg",
         "userId": ""
     },
@@ -278,7 +278,7 @@
         "name": "Coliflor",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/7/73/Coliflores_blancas_de_la_huerta_de_Valencia.jpg",
         "userId": ""
     },
@@ -286,7 +286,7 @@
         "name": "Tomate",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/8/88/Bright_red_tomato_and_cross_section02.jpg",
         "userId": ""
     },
@@ -294,7 +294,7 @@
         "name": "Zanahoria",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/1/1c/Carotts_%28Daucus_Carotta%29.jpg",
         "userId": ""
     },
@@ -302,7 +302,7 @@
         "name": "Espárrago",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/4/4e/Asparagus_produce-1.jpg",
         "userId": ""
     },
@@ -310,7 +310,7 @@
         "name": "Espinaca",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/0/02/Spinach_3.jpg",
         "userId": ""
     },
@@ -318,7 +318,7 @@
         "name": "Maíz",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/1/19/Zea_mays_%27Ottofile_giallo_Tortonese%27_MHNT.BOT.2015.34.1.jpg",
         "userId": ""
     },
@@ -326,7 +326,7 @@
         "name": "Pepino",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://es.wikipedia.org/wiki/Cucumis_sativus#/media/Archivo:ARS_cucumber.jpg",
         "userId": ""
     },
@@ -334,7 +334,7 @@
         "name": "Pimiento verde",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Pimientos_verdes.jpg",
         "userId": ""
     },
@@ -342,7 +342,7 @@
         "name": "Pimiento rojo",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/8/88/Pimientos_rojos%2C_origen_Castell%C3%B3n.jpg",
         "userId": ""
     },
@@ -350,7 +350,7 @@
         "name": "Calçot",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Leeks_produce-1.jpg",
         "userId": ""
     },
@@ -358,7 +358,7 @@
         "name": "Remolacha",
         "tag": "",
         "category": "Verdura",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/9/93/Beets_produce-1.jpg",
         "userId": ""
     },
@@ -366,7 +366,7 @@
         "name": "Albaricoque",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/f/f9/Apricots.jpg",
         "userId": ""
     },
@@ -374,7 +374,7 @@
         "name": "Caqui",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Kaki.JPG",
         "userId": ""
     },
@@ -382,7 +382,7 @@
         "name": "Aguacate",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/Avocado_Hass_-_single_and_halved.jpg",
         "userId": ""
     },
@@ -390,7 +390,7 @@
         "name": "Cereza",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Cherries_cerezas_Valle_del_Jerte_01.JPG",
         "userId": ""
     },
@@ -398,7 +398,7 @@
         "name": "Mango",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/0/00/Manga_1.jpg",
         "userId": ""
     },
@@ -406,7 +406,7 @@
         "name": "Melocotón",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/8/8c/%28Prunus_persica%29_California.JPG",
         "userId": ""
     },
@@ -414,7 +414,7 @@
         "name": "Ciruela",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Plum_on_tree02.jpg",
         "userId": ""
     },
@@ -422,7 +422,7 @@
         "name": "Fruta del bosque",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://es.wikipedia.org/wiki/Fruta_del_bosque#/media/Archivo:Berries_(USDA_ARS).jpg",
         "userId": ""
     },
@@ -430,7 +430,7 @@
         "name": "Frutos secos",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://es.wikipedia.org/wiki/Fruto_seco#/media/Archivo:20130126_Mixed_nuts.jpg",
         "userId": ""
     },
@@ -438,7 +438,7 @@
         "name": "Membrillo",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/d/d6/Cydonia.jpg",
         "userId": ""
     },
@@ -446,7 +446,7 @@
         "name": "Peras",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/6/61/Pyrus_-_Clapps_Liebling.JPG",
         "userId": ""
     },
@@ -454,7 +454,7 @@
         "name": "Manzanas",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Malus-Gala.jpg",
         "userId": ""
     },
@@ -462,7 +462,7 @@
         "name": "Uvas",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "https://upload.wikimedia.org/wikipedia/commons/5/55/Grapes_Angoor.JPG",
         "userId": ""
     },
@@ -470,7 +470,7 @@
         "name": "",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "",
         "userId": ""
     },
@@ -478,7 +478,7 @@
         "name": "",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "",
         "userId": ""
     },
@@ -486,7 +486,7 @@
         "name": "",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "",
         "userId": ""
     },
@@ -494,7 +494,7 @@
         "name": "",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "",
         "userId": ""
     },
@@ -502,7 +502,7 @@
         "name": "",
         "tag": "",
         "category": "Fruta",
-        "comment": "",
+         
         "img": "",
         "userId": ""
     }

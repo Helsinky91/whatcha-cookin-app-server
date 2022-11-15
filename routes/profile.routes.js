@@ -1,9 +1,6 @@
-const { find } = require("../models/Ingredient.model");
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 const router = require("express").Router();
-
-
 
 
 // GET "/api/profile/list" -> shows filtered profiles
@@ -60,7 +57,7 @@ try {
 //PATCH "/api/profile/:userId/edit "  => edits and updates profile
 router.patch("/:userId/edit", async (req, res, next) => {
     
-    const { username, image, email, tags, friends, favourites } = req.body
+    const { username, email, tags, friends, favourites } = req.body
 
     if( username === "" ) {
         res.status(400).json({ errorMessage: "Please fill username" })
@@ -69,8 +66,6 @@ router.patch("/:userId/edit", async (req, res, next) => {
         res.status(400).json({ errorMessage: "Please fill email" })
         return
     } 
-
-
 
     //get the changes to edit the user
     const userUpdates = {
