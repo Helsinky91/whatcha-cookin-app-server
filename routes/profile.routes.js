@@ -61,6 +61,16 @@ router.patch("/:userId/edit", async (req, res, next) => {
     
     const { username, image, email, tags, friends, favourites } = req.body
 
+    if( username === "" ) {
+        res.status(400).json({ errorMessage: "Please fill username" })
+        return
+    } else if( email === "" ) {
+        res.status(400).json({ errorMessage: "Please fill email" })
+        return
+    } 
+
+
+
     //get the changes to edit the user
     const userUpdates = {
         username, 
@@ -70,7 +80,7 @@ router.patch("/:userId/edit", async (req, res, next) => {
         friends, 
         favourites
     }
-
+console.log("userUpdtes: ", userUpdates)
     try {
         await User.findByIdAndUpdate(req.params.userId, userUpdates);
         res.status(200).json("User updated successfully")

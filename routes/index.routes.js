@@ -3,7 +3,6 @@ const  isLogged  = require("../middlewares/auth.middlewares");
 const isAdmin = require("../middlewares/admin.middleware");
 
 
-
 router.get("/", (req, res, next) => {
   res.json("All good in here");
 });
@@ -27,5 +26,8 @@ router.use("/recipes", recipesRoutes)
 //set up for ingredients.routes.js to start "/ingredients/..."
 const ingredientsRoutes = require("./ingredients.routes");
 router.use("/ingredient", ingredientsRoutes)
+
+const uploadRoutes = require("./upload.routes")
+router.use("/uploader", uploadRoutes)
 
 module.exports = router;
