@@ -91,8 +91,9 @@ console.log("userUpdtes: ", userUpdates)
 
 // PATCH "/api/profile/:userId/add-friend" -> adds one profile as your friend
 router.patch("/:userId/add-friend", async (req, res, next) => {
+    const { userId }= req.params
     const addFriend = {
-        friends: req.params.userId
+        friends: userId
     }
 
     try {
@@ -150,8 +151,8 @@ router.get("/:userId/friends", async (req, res, next) => {
       }
 })
 
-//GET "api/profile/:userId/my-recipes" -> populate recipes of the user
-router.get("/:userId/my-recipes", async (req, res, next) => {
+//GET "api/profile/my-recipes" -> populate recipes of the user
+router.get("/my-recipes", async (req, res, next) => {
     const { userId } = req.params
     try {
         const response = await Recipe.find().populate("createdBy", `${userId}`)
@@ -162,8 +163,8 @@ router.get("/:userId/my-recipes", async (req, res, next) => {
       }
 })
 
-//GET "api/profile/:userId/fav-recipes" -> populate favourite recipes of user
-router.get("/:userId/fav-recipes", async (req, res, next) => {
+//GET "api/profile/fav-recipes" -> populate favourite recipes of user
+router.get("/fav-recipes", async (req, res, next) => {
     const { userId } = req.payload
     try {
         const response = await User.findById(userId).populate("favourites")
