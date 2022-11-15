@@ -1,4 +1,5 @@
 const { find } = require("../models/Ingredient.model");
+const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 const router = require("express").Router();
 
@@ -131,6 +132,43 @@ router.delete("/:userId/delete-profile", async (req, res,next) => {
         next(error)
     }
 })
+
+//GET "api/profile/:userId/friends" -> populate friends of one user
+router.get("/:userId/friends", async (req, res, next) => {
+    const { userId } = req.params
+    try {
+        const response = await User.findById(userId).populate("friends")
+        res.status(200).json(response)
+       
+      } catch (error) {
+        next(error);
+      }
+})
+
+//GET "api/profile/:userId/my-recipes" -> populate recipes of the user
+router.get("/:userId/my-recipes", async (req, res, next) => {
+    const { userId } = req.params
+    try {
+        const response = await Recipe.find().populate("createdBy", `${userId}`)
+        res.status(200).json(response)
+       
+      } catch (error) {
+        next(error);
+      }
+})
+
+//GET "api/profile/:userId/fav-recipes" -> populate favourite recipes of user
+router.get("/:userId/fav-recipes", async (req, res, next) => {
+    const { userId } = req.params
+    try {
+        const response = await User.findById(userId).populate("favourites")
+        res.status(200).json(response)
+       
+      } catch (error) {
+        next(error);
+      }
+})
+
 
 
 module.exports = router;
