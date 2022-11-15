@@ -152,8 +152,7 @@ router.patch("/:recipeId/fav-recipe", isLogged, async (req, res, next) => {
 //PATCH "api/recipes/:recipeId/delete-fav" -> remove recipe from fav
 router.patch("/:recipeId/delete-fav", isLogged, async (req, res,next) => {
     const { _id } = req.payload
- 
-
+    const {recipeId} = req.params
   try {
     await User.findByIdAndUpdate(_id    , {
       $pull: { favourites: recipeId },
@@ -171,6 +170,23 @@ router.get("/:recipeId/ingredients", isLogged, async (req, res, next) => {
     const { recipeId } = req.params
     try {
         const response = await Recipe.findById(recipeId).populate("ingredients")
+        res.status(200).json(response)
+       
+      } catch (error) {
+        next(error);
+      }
+})
+
+
+//GET "api/recipes/:recipeId/user-fav-recipes" -> populate favourite recipes of user
+router.get("/:recipeId/user-fav-recipes", isLogged, async (req, res, next) => {
+    const { userId } = req.payload
+    const { recipeId } = req.params
+
+
+    try {
+        const response = await User.findById(userId)
+
         res.status(200).json(response)
        
       } catch (error) {
