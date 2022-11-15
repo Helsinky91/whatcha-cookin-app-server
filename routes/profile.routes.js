@@ -166,6 +166,20 @@ router.get("/my-recipes", async (req, res, next) => {
       }
 })
 
+
+//GET "api/profile/my-fav-recipes" -> populate favourite recipes of user
+router.get("/my-fav-recipes", async (req, res, next) => {
+    const { userId } = req.payload
+    console.log("req.payload", req.payload)
+    try {
+        const response = await User.findById(userId).populate("favourites")
+        res.status(200).json(response)
+       
+      } catch (error) {
+        next(error);
+      }
+})
+
 //GET "/api/profile/:friendId/fav-recipes"
 router.get("/:friendId/fav-recipes", async (req, res,next) => {
     const { friendId }= req.params
@@ -177,18 +191,6 @@ try {
 }
 })
 
-//GET "api/profile/fav-recipes" -> populate favourite recipes of user
-router.get("/fav-recipes", async (req, res, next) => {
-    const { userId } = req.payload
-    try {
-        const response = await User.findById(userId).populate({ path: 'createdBy', select: userId })
-        console.log("response2", response)
-        res.status(200).json(response)
-       
-      } catch (error) {
-        next(error);
-      }
-})
 
 
 
