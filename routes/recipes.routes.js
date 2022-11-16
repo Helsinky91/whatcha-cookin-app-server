@@ -77,6 +77,8 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
     try{
         await Recipe.findByIdAndUpdate(req.params.recipeId, recipeUpdates);
         res.status(200).json("Recipe updated successfully")
+        console.log("recipeUpdates in recipe edit" ,recipeUpdates)
+        
 
     }catch(error) {
         next(error)
@@ -93,7 +95,7 @@ router.post("/create", isLogged, async (req, res, next) => {
     //get data from FE to send BE
     const newRecipe = {
         name: name,
-        tag: tag,
+        tag,
         createdBy: _id,
         description: description,
         steps,
