@@ -52,10 +52,10 @@ router.delete("/:commentId/delete", isLogged, async (req, res, next) => {
   
   try {
       const recipeDetails = await Comment.findById(commentId)
-      // if (recipeDetails.username._id === _id) {
+      if (recipeDetails.username._id == _id) {
           await Comment.findByIdAndDelete(commentId)
           res.status(200).json("Comment deleted")
-      // }
+      }
   } catch (error) {
       next(error)
   }
