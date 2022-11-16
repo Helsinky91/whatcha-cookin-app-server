@@ -80,6 +80,7 @@ router.get("/type-of-food", async (req, res, next) => {
 router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
     const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
     const { _id, role } = req.payload
+    const { recipeId } = req.params
 
     //get the changes to edit the recipe
     const recipeUpdates = {
