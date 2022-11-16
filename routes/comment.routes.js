@@ -48,11 +48,12 @@ router.get("/:recipeId/comment-list", async (req, res, next) => {
 // DELETE "/api/comment/:commentId/delete" -> delete specific comment		
 router.delete("/:commentId/delete", isLogged, async (req, res, next) => {
   const { commentId } = req.params
-  const { _id } = req.payload
+  const { _id, role } = req.payload
+  
   
   try {
       const recipeDetails = await Comment.findById(commentId)
-      if (recipeDetails.username._id == _id) {
+      if (recipeDetails.username._id == _id || role === "admin") {
           await Comment.findByIdAndDelete(commentId)
           res.status(200).json("Comment deleted")
       }

@@ -61,6 +61,7 @@ router.get("/tag", async (req, res, next) => {
 // PATCH "/api/recipes/:recipeId/edit" -> edit specific recipe
 router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
     const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
+    const { _id, role } = req.payload
 
     //get the changes to edit the recipe
     const recipeUpdates = {
@@ -75,10 +76,12 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
     }
 
     try{
+        const recipeDetails = await Recipe.findById(recipeId)
+        if (recipeDetails.createdBy == _id || role === "admin") {
         await Recipe.findByIdAndUpdate(req.params.recipeId, recipeUpdates);
         res.status(200).json("Recipe updated successfully")
         console.log("recipeUpdates in recipe edit" ,recipeUpdates)
-        
+        }
 
     }catch(error) {
         next(error)
@@ -120,11 +123,11 @@ router.post("/create", isLogged, async (req, res, next) => {
 // DELETE "/api/recipes/:recipeId/delete" -> delete specific recipe		
 router.delete("/:recipeId/delete", isLogged, async (req, res, next) => {
     const { recipeId } = req.params
-    const { _id } = req.payload
+    const { _id, role } = req.payload
     
     try {
         const recipeDetails = await Recipe.findById(recipeId)
-        if (recipeDetails.createdBy === _id) {
+        if (recipeDetails.createdBy == _id || role === "admin") {
             await Recipe.findByIdAndDelete(recipeId)
             res.status(200).json("Recipe deleted")
         }

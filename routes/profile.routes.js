@@ -58,6 +58,7 @@ try {
 router.patch("/:userId/edit", async (req, res, next) => {
     
     const { username, email, tag, friends, favourites } = req.body
+    const { _id, role } = req.payload
 
     if( username === "" ) {
         res.status(400).json({ errorMessage: "Please fill username" })
@@ -77,9 +78,11 @@ router.patch("/:userId/edit", async (req, res, next) => {
         favourites
     }
     try {
+        if (req.payload._id == userId || role === "admin"){
         await User.findByIdAndUpdate(req.params.userId, userUpdates);
         res.status(200).json("User updated successfully")
         console.log("userUpdates in profile edit" ,userUpdates)
+        }
 
     }catch(error){
         next(error)
@@ -124,9 +127,10 @@ router.patch("/:userId/un-friend", async (req, res,next) => {
 // DELETE "/api/profile/:userId/delete-profile" -> removes one profile as your friend
 router.delete("/:userId/delete-profile", async (req, res,next) => {
     const { userId } = req.params
+    const { _id, role } = req.payload
 
     try {
-    if (req.payload._id === userId) {
+    if (req.payload._id == userId || role === "admin") {
         await User.findByIdAndDelete(userId)
         res.status(200).json("Perfil eliminado correctamente")
         
