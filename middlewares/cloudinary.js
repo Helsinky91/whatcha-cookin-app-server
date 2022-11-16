@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
   // cloudinary: cloudinary,
   cloudinary,
   params: {
-    allowedFormats: ['jpg', 'png'],
+    allowedFormats: ['jpg', 'png', 'jpeg'],
     folder: 'whatcha-cookin' // The name of the folder in cloudinary
   }
 });

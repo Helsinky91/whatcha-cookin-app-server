@@ -1,4 +1,6 @@
 const { Schema, model } = require("mongoose");
+const tag = require("../utils/tags");
+const typeOfFood = require("../utils/typeOfFood");
 
 const recipeSchema = new Schema(
   {
@@ -6,7 +8,10 @@ const recipeSchema = new Schema(
         type: String,
         required: true
     },
-    tag: [String],
+    tag: {
+        type: String,
+        enum: tag
+    },
     createdBy: {
         //feeds from User.model 
         type: Schema.Types.ObjectId,
@@ -18,8 +23,11 @@ const recipeSchema = new Schema(
         type: String,
         default: "https://res.cloudinary.com/ddzhdj4yd/image/upload/v1668514029/whatcha-cookin/RecetaDefault_lxygod.png"
     },
-    //to define japanese, mediterranean, ...
-    typeOfFood: String,
+    
+    typeOfFood: {
+        type: String,
+        enum: typeOfFood
+    },
     ingredients: String
 
 })

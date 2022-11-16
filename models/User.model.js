@@ -1,6 +1,6 @@
 const { Schema, model } = require("mongoose");
+const tag = require("../utils/tags");
 
-// TODO: Please make sure you edit the User model to whatever makes sense in this case
 const userSchema = new Schema(
   {
     username: {
@@ -26,7 +26,10 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    tag: [String],
+    tag: {
+      type: String,
+      enum: tag
+    },
     friends: [{
       //feeds from User.model 
       type: Schema.Types.ObjectId,
@@ -40,7 +43,6 @@ const userSchema = new Schema(
     
   },
   {
-    // this second object adds extra properties: `createdAt` and `updatedAt`    
     timestamps: true
   }
   
