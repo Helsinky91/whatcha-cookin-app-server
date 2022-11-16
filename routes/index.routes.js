@@ -23,6 +23,10 @@ router.use("/admin", isLogged, isAdmin, adminRoutes)
 const recipesRoutes = require("./recipes.routes")
 router.use("/recipes", recipesRoutes)
 
+//set up for recipes.routes.js to start "/recipes/..."
+const commentRoutes = require("./comment.routes")
+router.use("/comment", commentRoutes)
+
 //set up for ingredients.routes.js to start "/ingredients/..."
 const ingredientsRoutes = require("./ingredients.routes");
 router.use("/ingredient", ingredientsRoutes)

@@ -12,7 +12,8 @@ const commentSchema = new Schema(
            type: Schema.Types.ObjectId,
            ref: "Recipe",
            type: String
-       }
+       },
+       comment: String
    })
 
 const Comment = model("Comment", commentSchema);
