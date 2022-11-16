@@ -9,7 +9,7 @@ router.post("/", uploader.single("image"), (req, res, next) => {
     return
   }
 
-    // console.log(req.file.path) // el URL de cloudinary
+
   res.status(200).json({ image: req.file.path })
 
 })
