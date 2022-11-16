@@ -79,7 +79,7 @@ router.patch("/:userId/edit", async (req, res, next) => {
     try {
         await User.findByIdAndUpdate(req.params.userId, userUpdates);
         res.status(200).json("User updated successfully")
-        console.log(userUpdates)
+        console.log("userUpdates in profile edit" ,userUpdates)
 
     }catch(error){
         next(error)
