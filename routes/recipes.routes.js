@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Recipe = require("../models/Recipe.model");
 const  isLogged  = require("../middlewares/auth");
 const User = require("../models/User.model");
+const tag = require("../utils/tag");
 
 
 // GET "/api/recipes/random-recipe" -> shows one random recipe
@@ -24,7 +25,7 @@ router.get("/random-recipe", async (req, res, next) => {
     }
 })
 
-//GET "api/recipes/recipes-list" -> shows a list of all recipes name + image + tags
+//GET "api/recipes/recipes-list" -> shows a list of all recipes name + image + tag
 router.get("/recipes-list", async (req, res, next) => {
     try{
         const response = await Recipe.find()
@@ -36,10 +37,6 @@ router.get("/recipes-list", async (req, res, next) => {
     }
 })
 
-// GET  "/api/recipes/search" -> shows a filtered search of recipes
-//* NO NEED FOR A LIST OF SEARCH HERE, SERá COMPONENT EN EL FE. 
-
-
 // GET "/api/recipes/:recipeId/details" -> shows detailed recipes
 router.get("/:recipeId/details", isLogged, async (req, res, next) => {
     const { recipeId } = req.params;
@@ -47,10 +44,16 @@ router.get("/:recipeId/details", isLogged, async (req, res, next) => {
     try{
         const response = await Recipe.findById(recipeId)
         res.status(200).json(response)
-
     }catch(error){
         next(error)
     }
+
+})
+
+// GET "/api/recipes/tag" -> shows tag in recipes
+router.get("/tag", isLogged, async (req, res, next) => {
+    // console.log("tag", tag)
+    res.status(200).json(tag)
 
 })
 
@@ -86,7 +89,6 @@ router.post("/create", isLogged, async (req, res, next) => {
     const { _id } = req.payload
 
     const {name, tag, description, steps, typeOfFood, ingredients} = req.body
-      //! error cuando se añade uno, no se rellenan los campos
 
     //get data from FE to send BE
     const newRecipe = {
@@ -95,7 +97,7 @@ router.post("/create", isLogged, async (req, res, next) => {
         createdBy: _id,
         description: description,
         steps,
-        image: req.body.image,
+        image: req.body.image === "" ? undefined : req.body.image,
         typeOfFood,
         ingredients
     }

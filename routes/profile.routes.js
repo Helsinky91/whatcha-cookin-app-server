@@ -56,7 +56,7 @@ try {
 //PATCH "/api/profile/:userId/edit "  => edits and updates profile
 router.patch("/:userId/edit", async (req, res, next) => {
     
-    const { username, email, tags, friends, favourites } = req.body
+    const { username, email, tag, friends, favourites } = req.body
 
     if( username === "" ) {
         res.status(400).json({ errorMessage: "Please fill username" })
@@ -71,7 +71,7 @@ router.patch("/:userId/edit", async (req, res, next) => {
         username, 
         image: req.body.image,
         email, 
-        tags, 
+        tag, 
         friends, 
         favourites
     }

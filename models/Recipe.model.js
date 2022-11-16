@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const tag = require("../utils/tags");
+const tag = require("../utils/tag");
 const typeOfFood = require("../utils/typeOfFood");
 
 const recipeSchema = new Schema(
@@ -8,10 +8,10 @@ const recipeSchema = new Schema(
         type: String,
         required: true
     },
-    tag: {
+    tag: [{
         type: String,
         enum: tag
-    },
+    }],
     createdBy: {
         //feeds from User.model 
         type: Schema.Types.ObjectId,

@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const tag = require("../utils/tags");
+const tag = require("../utils/tag");
 
 const ingredientSchema = new Schema(
   {
@@ -7,10 +7,10 @@ const ingredientSchema = new Schema(
         type: String,
         required: true
     },
-    tag: {
+    tag: [{
         type: String,
         enum: tag
-    },
+    }],
     image: {
         type: String,
         default: "https://res.cloudinary.com/ddzhdj4yd/image/upload/v1668514029/whatcha-cookin/ingredientDefault_mpnpxg.png"

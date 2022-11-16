@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-const tag = require("../utils/tags");
+const tag = require("../utils/tag");
 
 const userSchema = new Schema(
   {
@@ -26,10 +26,10 @@ const userSchema = new Schema(
       type: String,
       required: true
     },
-    tag: {
+    tag: [{
       type: String,
       enum: tag
-    },
+    }],
     friends: [{
       //feeds from User.model 
       type: Schema.Types.ObjectId,
