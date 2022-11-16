@@ -70,7 +70,7 @@ router.get("/tag", async (req, res, next) => {
 
 // GET "/api/recipes/type-of-food" -> shows typeOfFood in recipes
 router.get("/type-of-food", async (req, res, next) => {
-    console.log("typeOfFood", typeOfFood)
+    // console.log("typeOfFood", typeOfFood)
     res.status(200).json(typeOfFood)
 
 })

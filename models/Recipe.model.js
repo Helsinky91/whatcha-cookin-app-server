@@ -24,10 +24,10 @@ const recipeSchema = new Schema(
         default: "https://res.cloudinary.com/ddzhdj4yd/image/upload/v1668514029/whatcha-cookin/RecetaDefault_lxygod.png"
     },
     
-    typeOfFood: {
+    typeOfFood: [{
         type: String,
         enum: typeOfFood
-    },
+    }],
     ingredients: String
 
 })
