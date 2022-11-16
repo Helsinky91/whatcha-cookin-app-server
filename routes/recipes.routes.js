@@ -25,17 +25,27 @@ router.get("/random-recipe", async (req, res, next) => {
     }
 })
 
-//GET "api/recipes/recipes-list" -> shows a list of all recipes name + image + tag
+//GET "api/recipes/recipes-list" -> shows a list of all recipes
 router.get("/recipes-list", async (req, res, next) => {
     try{
         const response = await Recipe.find()
-   
         res.status(200).json(response)
-
     }catch(error) {
         next(error)
     }
 })
+
+//GET "api/recipes/ingredients-list" -> shows a list of all recipes by ingredients
+router.get("/ingredients-list", async (req, res, next) => {
+    try{
+        const response = await Recipe.find().select("ingredients")
+        console.log("ingredients-list ", response)
+        res.status(200).json(response)
+    }catch(error) {
+        next(error)
+    }
+})
+
 
 // GET "/api/recipes/:recipeId/details" -> shows detailed recipes
 router.get("/:recipeId/details", isLogged, async (req, res, next) => {
