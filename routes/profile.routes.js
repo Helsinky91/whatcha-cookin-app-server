@@ -1,5 +1,6 @@
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
+const tag = require("../utils/tag");
 const router = require("express").Router();
 
 
@@ -71,13 +72,14 @@ router.patch("/:userId/edit", async (req, res, next) => {
         username, 
         image: req.body.image,
         email, 
-        tag, 
+        tag,  
         friends, 
         favourites
     }
     try {
         await User.findByIdAndUpdate(req.params.userId, userUpdates);
         res.status(200).json("User updated successfully")
+        console.log(userUpdates)
 
     }catch(error){
         next(error)
@@ -165,12 +167,10 @@ router.get("/my-recipes", async (req, res, next) => {
 
 //GET "api/profile/my-fav-recipes" -> populate favourite recipes of user
 router.get("/my-fav-recipes", async (req, res, next) => {
-
   
     try {
         const response = await User.findById(req.payload._id).populate("favourites")
         res.status(200).json(response)
-
        
       } catch (error) {
         next(error);
@@ -188,7 +188,11 @@ try {
 }
 })
 
-
+// GET "/api/profile/tag" -> shows tag in recipes
+router.get("/tag", async (req, res, next) => {
+    // console.log("tag", tag)
+    res.status(200).json(tag)
+})
 
 
 module.exports = router;

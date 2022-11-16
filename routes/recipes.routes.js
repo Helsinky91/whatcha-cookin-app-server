@@ -51,7 +51,7 @@ router.get("/:recipeId/details", isLogged, async (req, res, next) => {
 })
 
 // GET "/api/recipes/tag" -> shows tag in recipes
-router.get("/tag", isLogged, async (req, res, next) => {
+router.get("/tag", async (req, res, next) => {
     // console.log("tag", tag)
     res.status(200).json(tag)
 

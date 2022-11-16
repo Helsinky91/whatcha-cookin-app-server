@@ -5,10 +5,8 @@ const Ingredient = require("../models/Ingredient.model");
 
 // GET "/api/ingredient/list" -> displays list of all ingredients
 router.get("/list", async (req, res, next) => {
-
     try{
         const response = await Ingredient.find()
-
         res.status(200).json(response)
     
     }catch(error){
