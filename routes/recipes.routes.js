@@ -28,7 +28,7 @@ router.get("/random-recipe", async (req, res, next) => {
 router.get("/recipes-list", async (req, res, next) => {
     try{
         const response = await Recipe.find()
-        // console.log("recipe list :" , response)
+   
         res.status(200).json(response)
 
     }catch(error) {
