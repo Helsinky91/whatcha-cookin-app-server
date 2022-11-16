@@ -8,7 +8,7 @@ const User = require("../models/User.model");
 //PATCH "/api/admin/profile/:userId/edit "  => edits and updates profile
 router.patch("/profile/:userId/edit", async (req, res, next) => {
     
-    const { username, role, image, email, tags, } = req.body
+    const { username, role, image, email, tag, } = req.body
 
     //get the changes to edit the user
     const userUpdates = {
@@ -16,7 +16,7 @@ router.patch("/profile/:userId/edit", async (req, res, next) => {
         role, 
         image: req.body.image,
         email, 
-        tags
+        tag
     }
 
     try {

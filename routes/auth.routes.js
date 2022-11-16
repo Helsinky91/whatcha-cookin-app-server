@@ -93,7 +93,7 @@ router.post("/login", async (req, res, next) => {
       username: foundUser.username,
       email: foundUser.email,
       role: foundUser.role,
-      tags: foundUser.tags,
+      tag: foundUser.tag,
     };
 
     const authToken = jwt.sign(payload, process.env.TOKEN_SECRET, {
