@@ -3,6 +3,7 @@ const Recipe = require("../models/Recipe.model");
 const  isLogged  = require("../middlewares/auth");
 const User = require("../models/User.model");
 const tag = require("../utils/tag");
+const typeOfFood = require("../utils/typeOfFood");
 
 
 // GET "/api/recipes/random-recipe" -> shows one random recipe
@@ -64,6 +65,13 @@ router.get("/:recipeId/details", isLogged, async (req, res, next) => {
 router.get("/tag", async (req, res, next) => {
     // console.log("tag", tag)
     res.status(200).json(tag)
+
+})
+
+// GET "/api/recipes/type-of-food" -> shows typeOfFood in recipes
+router.get("/type-of-food", async (req, res, next) => {
+    console.log("typeOfFood", typeOfFood)
+    res.status(200).json(typeOfFood)
 
 })
 
