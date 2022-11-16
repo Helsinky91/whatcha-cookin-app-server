@@ -122,7 +122,7 @@ router.delete("/:recipeId/delete", isLogged, async (req, res, next) => {
     
     try {
         const recipeDetails = await Recipe.findById(recipeId)
-        if (recipeDetails.createdBy !== _id) {
+        if (recipeDetails.createdBy === _id) {
             await Recipe.findByIdAndDelete(recipeId)
             res.status(200).json("Recipe deleted")
         }

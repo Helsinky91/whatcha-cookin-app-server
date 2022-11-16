@@ -9,7 +9,8 @@ const Comment = require("../models/Comment.model");
 router.post("/:recipeId/create", isLogged, async (req, res, next) => {
   const { _id } = req.payload
   const { recipeId } = req.params
-  const { newComment } = req.body
+  const { comment } = req.body
+  console.log("req.body", req.body)
     //! error cuando se añade uno, no se rellenan los campos
 
   //get data from FE to send BE
@@ -34,7 +35,7 @@ router.post("/:recipeId/create", isLogged, async (req, res, next) => {
 router.get("/:recipeId/comment-list", async (req, res, next) => {
     const { recipeId } = req.params
     try {
-        const response = await Comment.find("recipe", `${recipeId}`)
+        const response = await Comment.find({"recipe": `${recipeId}`}).populate("username")
         console.log("response", recipeId)
         res.status(200).json(response)
        
@@ -44,7 +45,21 @@ router.get("/:recipeId/comment-list", async (req, res, next) => {
 })
 
 
-
+// DELETE "/api/comment/:commentId/delete" -> delete specific comment		
+router.delete("/:commentId/delete", isLogged, async (req, res, next) => {
+  const { commentId } = req.params
+  const { _id } = req.payload
+  
+  try {
+      const recipeDetails = await Comment.findById(commentId)
+      // if (recipeDetails.username._id === _id) {
+          await Comment.findByIdAndDelete(commentId)
+          res.status(200).json("Comment deleted")
+      // }
+  } catch (error) {
+      next(error)
+  }
+})
 
 
 module.exports = router;
