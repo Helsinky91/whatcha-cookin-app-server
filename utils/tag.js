@@ -11,7 +11,10 @@ const tag = [
     "Proteína",
     "Verdura",
     "Legumbres",
-    "Hortalizas" 
+    "Hortalizas",
+    "Pasta",
+    "Lácteos",
+    "Queso" 
 
 ]
 

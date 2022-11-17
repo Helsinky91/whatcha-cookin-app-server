@@ -11,6 +11,7 @@ const userSchema = new Schema(
       type: String,
       default: "user"
      },
+     description: String,
      image: {
       type: String,
       default: "https://res.cloudinary.com/ddzhdj4yd/image/upload/v1668514029/whatcha-cookin/AvatarDefault_gdhinf.png"
