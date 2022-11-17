@@ -44,7 +44,7 @@ router.get("/:recipeId/details", isLogged, async (req, res, next) => {
     const { recipeId } = req.params;
 
     try{
-        const response = await Recipe.findById(recipeId)
+        const response = await Recipe.findById(recipeId).populate("createdBy")
         res.status(200).json(response)
     }catch(error){
         next(error)
@@ -87,7 +87,7 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
 
     try{
         const recipeDetails = await Recipe.findById(recipeId)
-        if (recipeDetails.createdBy == _id || role === "admin") {
+        if (recipeDetails.createdBy === _id || role === "admin") {
         await Recipe.findByIdAndUpdate(req.params.recipeId, recipeUpdates);
         res.status(200).json("Recipe updated successfully")
         console.log("recipeUpdates in recipe edit" ,recipeUpdates)
