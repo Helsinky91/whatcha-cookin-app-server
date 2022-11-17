@@ -133,7 +133,18 @@ router.delete("/:userId/delete-profile", async (req, res,next) => {
 
     try {
     if (_id === userId || role === "admin") {
+        recipesToDelete = await Recipe.find({createdBy: `${userId }` })
+        recipesToDelete.map( async (eachRecipe) => {
+            try {
+                await Recipe.findByIdAndDelete(eachRecipe._id)
+            } catch (error) {
+                next(error);
+              }
+            })
         await User.findByIdAndDelete(userId)
+
+        //lo mismo para comentarios
+        
         res.status(200).json("Perfil eliminado correctamente")
         
     }
