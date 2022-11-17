@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const  isLogged  = require("../middlewares/auth");
-const Ingredient = require("../models/Ingredient.model");
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 

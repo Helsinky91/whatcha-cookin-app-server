@@ -1,3 +1,4 @@
+const Comment = require("../models/Comment.model");
 const Recipe = require("../models/Recipe.model");
 const User = require("../models/User.model");
 const tag = require("../utils/tag");
@@ -133,7 +134,7 @@ router.delete("/:userId/delete-profile", async (req, res,next) => {
 
     try {
     if (_id === userId || role === "admin") {
-        recipesToDelete = await Recipe.find({createdBy: `${userId }` })
+        recipesToDelete = await Recipe.find({createdBy: `${userId }`})
         recipesToDelete.map( async (eachRecipe) => {
             try {
                 await Recipe.findByIdAndDelete(eachRecipe._id)
@@ -141,6 +142,15 @@ router.delete("/:userId/delete-profile", async (req, res,next) => {
                 next(error);
               }
             })
+        commentsToDelete = await Comment.find({createdBy: `${userId }` })
+        commentsToDelete.map( async (eachComment) => {
+            try {
+                await Comment.findByIdAndDelete(eachComment._id)
+            } catch (error) {
+                next(error);
+                
+            }
+        })
         await User.findByIdAndDelete(userId)
 
         //lo mismo para comentarios

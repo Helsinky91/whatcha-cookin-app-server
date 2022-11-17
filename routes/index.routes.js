@@ -27,10 +27,6 @@ router.use("/recipes", recipesRoutes)
 const commentRoutes = require("./comment.routes")
 router.use("/comment", commentRoutes)
 
-//set up for ingredients.routes.js to start "/ingredients/..."
-const ingredientsRoutes = require("./ingredients.routes");
-router.use("/ingredient", ingredientsRoutes)
-
 const uploadRoutes = require("./upload.routes")
 router.use("/uploader", uploadRoutes)
 
