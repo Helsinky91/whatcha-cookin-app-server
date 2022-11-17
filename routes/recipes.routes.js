@@ -40,7 +40,7 @@ router.get("/recipes-list", async (req, res, next) => {
 
 
 // GET "/api/recipes/:recipeId/details" -> shows detailed recipes
-router.get("/:recipeId/details", isLogged, async (req, res, next) => {
+router.get("/:recipeId/details", async (req, res, next) => {
     const { recipeId } = req.params;
 
     try{
@@ -72,6 +72,14 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
     const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
     const { _id, role } = req.payload
     const { recipeId } = req.params
+
+    // if( name === "" ) {
+    //     res.status(400).json({ errorMessage: "Please write a name" })
+    //     return
+    // } else if( description === "" ) {
+    //     res.status(400).json({ errorMessage: "Please write a description" })
+    //     return
+    // } 
 
     //get the changes to edit the recipe
     const recipeUpdates = {
