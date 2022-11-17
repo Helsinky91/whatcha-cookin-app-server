@@ -57,7 +57,7 @@ try {
 //PATCH "/api/profile/:userId/edit "  => edits and updates profile
 router.patch("/:userId/edit", async (req, res, next) => {
     
-    const { username, email, tag, friends, favourites } = req.body
+    const { username, email, tag, friends, favourites, description } = req.body
     const { _id } = req.payload
     const { userId } = req.params
 
