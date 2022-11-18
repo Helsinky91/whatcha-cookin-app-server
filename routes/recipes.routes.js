@@ -109,7 +109,7 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
 
 // POST "/api/recipes/create" ->  receives details from new recipe in FE and creates new recipe in DB
 router.post("/create", isLogged, async (req, res, next) => {
-    const { _id } = req.payloanpm
+    const { _id } = req.payload
 
     const {name, tag, description, steps, typeOfFood, ingredients} = req.body
 
@@ -132,6 +132,7 @@ router.post("/create", isLogged, async (req, res, next) => {
         res.status(201).json("New recipe created in DB")
 
     }catch(error){
+        console.log("rellena name")
         next(error)
     }
 })
