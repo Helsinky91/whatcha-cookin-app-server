@@ -18,12 +18,10 @@ router.post("/signup", async (req, res, next) => {
   // check the password strength
   const passwordRegex = /^(?=.*\d)(?=.*[a-z]).{6,}$/gm;
   if (passwordRegex.test(password) === false) {
-    res
-      .status(400)
-      .json({
-        errorMessage:
-          "La contraseña tiene que tener almenos 6 caracteres, con al menos un número",
-      });
+    res.status(400).json({
+      errorMessage:
+        "La contraseña tiene que tener almenos 6 caracteres, con al menos un número",
+    });
     return;
   }
 
@@ -73,7 +71,7 @@ router.post("/login", async (req, res, next) => {
   }
 
   try {
-    const foundUser = await User.findOne({email: email});
+    const foundUser = await User.findOne({ email: email });
     // check if user exist
     if (foundUser === null) {
       res.status(400).json({ errorMessage: "Credenciales no validas" });
@@ -109,9 +107,7 @@ router.post("/login", async (req, res, next) => {
 
 // GET "/api/auth/verify" -> send to FE if the user is already validate
 router.get("/verify", isLogged, (req, res, next) => {
-
-  
-  res.status(200).json( req.payload );
+  res.status(200).json(req.payload);
 });
 
 module.exports = router;
