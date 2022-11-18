@@ -69,7 +69,7 @@ router.get("/type-of-food", async (req, res, next) => {
 
 // PATCH "/api/recipes/:recipeId/edit" -> edit specific recipe
 router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
-    const {name, tag, comment, description, steps, typeOfFood, ingredients} = req.body
+    const {name, tag, description, steps, typeOfFood, ingredients} = req.body
     const { _id, role } = req.payload
     const { recipeId } = req.params
 
@@ -85,7 +85,6 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
     const recipeUpdates = {
         name,
         tag,
-        comment,
         description,
         steps,
         image: req.body.image,
@@ -95,11 +94,12 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
 
     try{
         const recipeDetails = await Recipe.findById(recipeId)
-        if (recipeDetails.createdBy === _id || role === "admin") {
+        console.log(recipeDetails.createdBy, "is equal to ", _id,) 
+        
         await Recipe.findByIdAndUpdate(req.params.recipeId, recipeUpdates);
         res.status(200).json("Recipe updated successfully")
         console.log("recipeUpdates in recipe edit" ,recipeUpdates)
-        }
+        
 
     }catch(error) {
         next(error)
