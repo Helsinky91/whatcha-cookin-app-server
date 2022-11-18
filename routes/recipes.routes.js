@@ -73,6 +73,14 @@ router.patch("/:recipeId/edit", isLogged, async (req, res, next) =>  {
     const { _id, role } = req.payload
     const { recipeId } = req.params
 
+    // if( name === "" ) {
+    //     res.status(400).json({ errorMessage: "Please write a name" })
+    //     return
+    // } else if( description === "" ) {
+    //     res.status(400).json({ errorMessage: "Please write a description" })
+    //     return
+    // } 
+
     //get the changes to edit the recipe
     const recipeUpdates = {
         name,
